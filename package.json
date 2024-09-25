@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "node build.js",
-    "compile": "yarn compile:all",
-    "compile:all": "for file in dist/libs/*.js; do yarn compile:file \"$file\"; done",
+    "compile": "yarn build && yarn compile:all",
+    "compile:all": "for file in dist/*.js; do yarn compile:file \"$file\"; done",
     "compile:file": "sh -c './javy build \"$1\" -o outputs/wasms/$(basename \"$1\" .js).wasm' --",
     "clean": "rm -rf dist outputs/wasms",
     "prebuild": "yarn clean && mkdir -p dist outputs/wasms"
